@@ -1,0 +1,67 @@
+
+{{!-- examples used from other repos, class example and tutorials.  --}}
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">New York Times Mongo News Scraper</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/savedarticles">Saved Articles</a></li>
+      <li><a href="https://www.nytimes.com/">Go To NY Times Website</a></li>
+    </ul>
+    
+      <form action="/scrape" method="POST" class="navbar-form navbar-left">
+        <button type="submit" class="btn btn-default">SCRAPE NEW ARTICLES!
+      </form>
+    </button>
+  </div>
+</nav>
+
+
+
+<!-- Main container -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+      <!--variable for article db-->
+      {{#each articles}}
+
+
+        <div class="panel panel-primary">
+          <div class="panel-heading row">
+            <div class="col-xs-9">
+              <h3 class="panel-title pull-left">{{this.title}}</h3>
+            </div>
+            <div class="col-xs-3">
+
+              <!--saves article to db-->
+              <form action="/save" method="POST">
+                <input id="article-title" type="hidden" name="title" value="{{this.title}}">
+                <input id="article-link" type="hidden" name="link" value={{this.link}}>
+                <button type="submit" class="btn btn-default pull-right">SAVE ARTICLE</button>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12>">
+              <div class="panel-body">
+                <p>{{this.link}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
